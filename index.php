@@ -18,14 +18,14 @@
 		connect-src * data: blob: https://jspaint.firebaseio.com wss://jspaint.firebaseio.com;
 	"> -->
 
-	<link href="styles/normalize.css" rel="stylesheet" type="text/css">
-	<link href="styles/layout.css" class="flippable-layout-stylesheet" rel="stylesheet" type="text/css">
-	<link href="styles/print.css" rel="stylesheet" type="text/css" media="print">
-	<link href="lib/os-gui/layout.css" class="flippable-layout-stylesheet" rel="stylesheet" type="text/css">
-	<!-- <link href="lib/os-gui/windows-98.css" rel="stylesheet" type="text/css"> -->
-	<!-- <link href="lib/os-gui/windows-default.css" rel="stylesheet" type="text/css" title="Windows Default"> -->
-	<!-- <link href="lib/os-gui/peggys-pastels.css" rel="alternate stylesheet" type="text/css" title="Peggy's Pastels"> -->
-	<!-- <link href="lib/tracky-mouse/tracky-mouse.css" rel="stylesheet" type="text/css"> -->
+	<link href="<?php echo base_url()?>/application/views/jspaint/styles/normalize.css" rel="stylesheet" type="text/css">
+	<link href="<?php echo base_url()?>/application/views/jspaint/styles/layout.css" class="flippable-layout-stylesheet" rel="stylesheet" type="text/css">
+	<link href="<?php echo base_url()?>/application/views/jspaint/styles/print.css" rel="stylesheet" type="text/css" media="print">
+	<link href="<?php echo base_url()?>/application/views/jspaint/lib/os-gui/layout.css" class="flippable-layout-stylesheet" rel="stylesheet" type="text/css">
+	<!-- <link href="<?php echo base_url()?>/application/views/jspaint/lib/os-gui/windows-98.css" rel="stylesheet" type="text/css"> -->
+	<!-- <link href="<?php echo base_url()?>/application/views/jspaint/lib/os-gui/windows-default.css" rel="stylesheet" type="text/css" title="Windows Default"> -->
+	<!-- <link href="<?php echo base_url()?>/application/views/jspaint/lib/os-gui/peggys-pastels.css" rel="alternate stylesheet" type="text/css" title="Peggy's Pastels"> -->
+	<!-- <link href="<?php echo base_url()?>/application/views/jspaint/lib/tracky-mouse/tracky-mouse.css" rel="stylesheet" type="text/css"> -->
 	<!--
 		@TODO: bring these styles into OS-GUI.
 		This is a custom build of 98.css https://github.com/jdan/98.css
@@ -37,20 +37,18 @@
 		This is not an @import in classic.css because it needs RTLCSS and I'm not applying RTLCSS to themes yet.
 		So I added .not-for-modern logic to theme.js to exclude these styles depending on the theme.
 	-->
-	<link href="lib/98.css/98.custom-build.css" class="flippable-layout-stylesheet not-for-modern" rel="stylesheet"
+	<link href="<?php echo base_url()?>/application/views/jspaint/lib/98.css/98.custom-build.css" class="flippable-layout-stylesheet not-for-modern" rel="stylesheet"
 		type="text/css">
 
-	<link rel="apple-touch-icon" href="images/icons/apple-icon-180x180.png">
+	<link rel="apple-touch-icon" href="<?= $favicon ?>">
 	<!-- Chrome will pick the largest image for some reason, instead of the most appropriate one. -->
 	<!-- <link rel="icon" type="image/png" sizes="192x192" href="images/icons/192x192.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/icons/32x32.png">
 		<link rel="icon" type="image/png" sizes="96x96" href="images/icons/96x96.png"> -->
 	<!-- <link rel="icon" type="image/png" sizes="16x16" href="images/icons/16x16.png"> -->
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="red">
 	<link rel="manifest" href="manifest.webmanifest">
 	<meta name="msapplication-TileColor" content="#008080">
-	<meta name="msapplication-TileImage" content="images/icons/ms-icon-144x144.png">
+	<meta name="msapplication-TileImage" content="<?= $favicon ?>">
 	<meta name="theme-color" content="#000080">
 
 	<meta name="viewport" content="width=device-width, user-scalable=no">
@@ -68,8 +66,8 @@
 	<meta name="twitter:site" content="@code4bots">
 	<meta name="twitter:creator" content="@code4bots">
 
-	<script src="src/error-handling-basic.js"></script>
-	<script src="src/theme.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/error-handling-basic.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/theme.js"></script>
 </head>
 
 <body>
@@ -97,7 +95,7 @@
 			</div>
 		</div>
 	</div>
-	<script defer src="src/test-news.js"></script>
+	<script defer src="<?php echo base_url()?>/application/views/jspaint/src/test-news.js"></script>
 	<!--
 		Before publishing a news update, make sure:
 		- The <time> element matches the date of the update.
@@ -111,62 +109,62 @@
 	-->
 
 	<!-- Note: no CDNs, even with fallback, as the fallback is too complicated to handle with CSP. -->
-	<script src="lib/jquery-3.4.1.min.js"></script>
-	<script src="lib/gif.js/gif.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/jquery-3.4.1.min.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/gif.js/gif.js"></script>
 	<!-- pako is used by UPNG.js and UTIF.js -->
-	<script src="lib/pako-2.0.3.min.js"></script>
-	<script src="lib/UPNG.js"></script>
-	<script src="lib/UTIF.js"></script>
-	<script src="lib/bmp.js"></script>
-	<script src="lib/pdf.js/build/pdf.js"></script>
-	<script src="lib/anypalette-0.6.0.js"></script>
-	<script src="lib/FileSaver.js"></script>
-	<script src="lib/font-detective.js"></script>
-	<script src="lib/libtess.min.js"></script>
-	<!-- <script src="lib/tracky-mouse/tracky-mouse.js"></script> -->
-	<script src="lib/os-gui/parse-theme.js"></script>
-	<script src="lib/os-gui/$Window.js"></script>
-	<script src="lib/os-gui/MenuBar.js"></script>
-	<script src="lib/imagetracer_v1.2.5.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/pako-2.0.3.min.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/UPNG.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/UTIF.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/bmp.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/pdf.js/build/pdf.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/anypalette-0.6.0.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/FileSaver.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/font-detective.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/libtess.min.js"></script>
+	<!-- <script src="<?php echo base_url()?>/application/views/jspaint/lib/tracky-mouse/tracky-mouse.js"></script> -->
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/os-gui/parse-theme.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/os-gui/$Window.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/os-gui/MenuBar.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/imagetracer_v1.2.5.js"></script>
 
 	<!-- must not be async/deferred, as it uses document.write(); and must come before other app code which uses localization functions -->
-	<script src="src/app-localization.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/app-localization.js"></script>
 
-	<script src="src/msgbox.js"></script>
-	<script src="src/functions.js"></script>
-	<script src="src/helpers.js"></script>
-	<script src="src/storage.js"></script>
-	<script src="src/$Component.js"></script>
-	<script src="src/$ToolWindow.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/msgbox.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/functions.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/helpers.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/storage.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/$Component.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/$ToolWindow.js"></script>
 
 	<!-- After show_error_message, showMessageBox, make_window_supporting_scale, and localize are defined,
 	set up better global error handling. -->
 	<!-- Note: This must be in the <body> as it also handles showing a message for Internet Explorer. -->
-	<script src="src/error-handling-enhanced.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/error-handling-enhanced.js"></script>
 
-	<script src="src/$ToolBox.js"></script>
-	<script src="src/$ColorBox.js"></script>
-	<script src="src/$FontBox.js"></script>
-	<script src="src/Handles.js"></script>
-	<script src="src/OnCanvasObject.js"></script>
-	<script src="src/OnCanvasSelection.js"></script>
-	<script src="src/OnCanvasTextBox.js"></script>
-	<script src="src/OnCanvasHelperLayer.js"></script>
-	<script src="src/image-manipulation.js"></script>
-	<script src="src/tool-options.js"></script>
-	<script src="src/tools.js"></script>
-	<!--<script src="src/extra-tools.js"></script>-->
-	<script src="src/edit-colors.js"></script>
-	<script src="src/manage-storage.js"></script>
-	<script src="src/imgur.js"></script>
-	<script src="src/help.js"></script>
-	<script src="src/simulate-random-gestures.js"></script>
-	<script src="src/menus.js"></script>
-	<script src="src/speech-recognition.js"></script>
-	<script src="src/app.js"></script>
-	<script src="src/sessions.js"></script>
-	<script src="lib/konami.js"></script>
-	<script src="src/vaporwave-fun.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/$ToolBox.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/$ColorBox.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/$FontBox.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/Handles.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/OnCanvasObject.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/OnCanvasSelection.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/OnCanvasTextBox.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/OnCanvasHelperLayer.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/image-manipulation.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/tool-options.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/tools.js"></script>
+	<!--<script src="<?php echo base_url()?>/application/views/jspaint/src/extra-tools.js"></script>-->
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/edit-colors.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/manage-storage.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/imgur.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/help.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/simulate-random-gestures.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/menus.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/speech-recognition.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/app.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/sessions.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/lib/konami.js"></script>
+	<script src="<?php echo base_url()?>/application/views/jspaint/src/vaporwave-fun.js"></script>
 
 	<noscript>
 		<h1><img src="<?= $favicon ?>" width="32" height="32" alt="<?= $title ?>" /><?= $title ?></h1>
