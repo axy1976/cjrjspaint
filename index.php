@@ -3,7 +3,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>JS Paint</title>
+	<?php if($_SERVER["SERVER_NAME"] == 'codingpro.online' || $_SERVER["SERVER_NAME"] == 'www.codingpro.online'):?>
+	<title><?php echo $title['title'] ?></title>
+	<?php else: ?>
+	<title><?php echo $title['title'] ?></title>
+	<?php endif; ?>
 
 	<!-- This should mirror CSP in electron-main.js, except maybe for firebase stuff. -->
 	<!-- Firebase stuff is somewhat speculative, as the quota is exceeded as I'm adding this. -->
